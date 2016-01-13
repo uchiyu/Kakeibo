@@ -53,10 +53,12 @@
             this.品名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.金額DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.備考DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryDataSet1 = new Kakeibo1.CategoryDataSet();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -97,6 +99,7 @@
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "追加";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonChange
             // 
@@ -241,6 +244,11 @@
             this.備考DataGridViewTextBoxColumn.HeaderText = "備考";
             this.備考DataGridViewTextBoxColumn.Name = "備考DataGridViewTextBoxColumn";
             // 
+            // categoryDataSet1
+            // 
+            this.categoryDataSet1.DataSetName = "CategoryDataSet";
+            this.categoryDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -255,11 +263,13 @@
             this.MainMenuStrip = this.mainMenu;
             this.Name = "Form1";
             this.Text = "簡易家計簿";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,6 +301,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 備考DataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource moneyDataTableBindingSource;
         private MoneyDataSet moneyDataSet;
+        private CategoryDataSet categoryDataSet1;
     }
 }
 
