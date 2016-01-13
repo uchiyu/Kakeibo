@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.monCalendar = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,6 +38,14 @@
             this.txtItem = new System.Windows.Forms.TextBox();
             this.mtxtMoney = new System.Windows.Forms.MaskedTextBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.categoryDataSet = new Kakeibo1.CategoryDataSet();
+            this.categoryDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // monCalendar
@@ -83,6 +92,8 @@
             // 
             // comCategory
             // 
+            this.comCategory.DataSource = this.categoryDataTableBindingSource;
+            this.comCategory.DisplayMember = "分類";
             this.comCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comCategory.FormattingEnabled = true;
             this.comCategory.Location = new System.Drawing.Point(299, 36);
@@ -100,9 +111,11 @@
             // mtxtMoney
             // 
             this.mtxtMoney.Location = new System.Drawing.Point(299, 102);
+            this.mtxtMoney.Mask = "999999";
             this.mtxtMoney.Name = "mtxtMoney";
             this.mtxtMoney.Size = new System.Drawing.Size(100, 19);
             this.mtxtMoney.TabIndex = 7;
+            this.mtxtMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtRemarks
             // 
@@ -111,11 +124,48 @@
             this.txtRemarks.Size = new System.Drawing.Size(100, 19);
             this.txtRemarks.TabIndex = 8;
             // 
+            // buttonOK
+            // 
+            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonOK.Location = new System.Drawing.Point(87, 192);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.TabIndex = 9;
+            this.buttonOK.Text = "登録";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(299, 191);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 10;
+            this.buttonCancel.Text = "キャンセル";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            // 
+            // categoryDataSet
+            // 
+            this.categoryDataSet.DataSetName = "CategoryDataSet";
+            this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoryDataSetBindingSource
+            // 
+            this.categoryDataSetBindingSource.DataSource = this.categoryDataSet;
+            this.categoryDataSetBindingSource.Position = 0;
+            // 
+            // categoryDataTableBindingSource
+            // 
+            this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
+            this.categoryDataTableBindingSource.DataSource = this.categoryDataSetBindingSource;
+            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 261);
+            this.ClientSize = new System.Drawing.Size(486, 241);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.txtRemarks);
             this.Controls.Add(this.mtxtMoney);
             this.Controls.Add(this.txtItem);
@@ -127,6 +177,9 @@
             this.Controls.Add(this.monCalendar);
             this.Name = "ItemForm";
             this.Text = "登録";
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,5 +196,10 @@
         private System.Windows.Forms.TextBox txtItem;
         private System.Windows.Forms.MaskedTextBox mtxtMoney;
         private System.Windows.Forms.TextBox txtRemarks;
+        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.BindingSource categoryDataTableBindingSource;
+        private System.Windows.Forms.BindingSource categoryDataSetBindingSource;
+        private CategoryDataSet categoryDataSet;
     }
 }
