@@ -16,5 +16,10 @@ namespace Kakeibo1
         {
             InitializeComponent();
         }
+
+        private void 追加ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
