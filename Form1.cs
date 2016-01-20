@@ -40,6 +40,7 @@ namespace Kakeibo1
         {
             ItemForm frmItem = new ItemForm(categoryDataSet1);
             DialogResult drRet = frmItem.ShowDialog();
+
             if (drRet == DialogResult.OK)
             {
                 moneyDataSet.moneyDataTable.AddmoneyDataTableRow(
@@ -56,14 +57,14 @@ namespace Kakeibo1
             this.Close();
         }
 
-        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void SaveData()
         {
-            string path = "MonwyData.csv";
+            string path = "MoneyData.csv";
             string strData = "";
             System.IO.StreamWriter sw = new System.IO.StreamWriter(
                 path,
@@ -118,6 +119,60 @@ namespace Kakeibo1
                 }
                 sr.Close();
             }
+        }
+
+        private void UpdateData()
+        {
+            int nowRow = dgv.CurrentRow.Index;
+            DateTime oldDate
+                = DateTime.Parse(dgv.Rows[nowRow].Cells[0].Value.ToString());
+            string oldCategory = dgv.Rows[nowRow].Cells[1].Value.ToString();
+            string oldItem = dgv.Rows[nowRow].Cells[2].Value.ToString();
+            int oldMoney
+                = int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString());
+            string oldRemarks = dgv.Rows[nowRow].Cells[4].Value.ToString();
+            ItemForm frmItem = new ItemForm(categoryDataSet1,
+                                            oldDate,
+                                            oldCategory,
+                                            oldItem,
+                                            oldMoney,
+                                            oldRemarks);
+            DialogResult drRet = frmItem.ShowDialog();
+            if (drRet == DialogResult.OK)
+            {
+                dgv.Rows[nowRow].Cells[0].Value
+                    = frmItem.monCalendar.SelectionRange.Start;
+                dgv.Rows[nowRow].Cells[1].Value = frmItem.cmbCategory.Text;
+                dgv.Rows[nowRow].Cells[2].Value = frmItem.txtItem.Text;
+                dgv.Rows[nowRow].Cells[3].Value = int.Parse(frmItem.mtxtMoney.Text);
+                dgv.Rows[nowRow].Cells[4].Value = frmItem.txtRemarks.Text;
+            }
+        }
+
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void 変更CToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void DeleteData()
+        {
+            int nowRow = dgv.CurrentRow.Index;
+            dgv.Rows.RemoveAt(nowRow); // 現在行を削除
+        }
+
+        private void 削除DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteData();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DeleteData();
         }
     }
 }
