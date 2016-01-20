@@ -34,18 +34,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comCategory = new System.Windows.Forms.ComboBox();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categoryDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categoryDataSet = new Kakeibo1.CategoryDataSet();
             this.txtItem = new System.Windows.Forms.TextBox();
             this.mtxtMoney = new System.Windows.Forms.MaskedTextBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.categoryDataSet = new Kakeibo1.CategoryDataSet();
-            this.categoryDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // monCalendar
@@ -90,16 +90,31 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "備考";
             // 
-            // comCategory
+            // cmbCategory
             // 
-            this.comCategory.DataSource = this.categoryDataTableBindingSource;
-            this.comCategory.DisplayMember = "分類";
-            this.comCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comCategory.FormattingEnabled = true;
-            this.comCategory.Location = new System.Drawing.Point(299, 36);
-            this.comCategory.Name = "comCategory";
-            this.comCategory.Size = new System.Drawing.Size(121, 20);
-            this.comCategory.TabIndex = 5;
+            this.cmbCategory.DataSource = this.categoryDataTableBindingSource;
+            this.cmbCategory.DisplayMember = "分類";
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(299, 36);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(121, 20);
+            this.cmbCategory.TabIndex = 5;
+            // 
+            // categoryDataTableBindingSource
+            // 
+            this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
+            this.categoryDataTableBindingSource.DataSource = this.categoryDataSetBindingSource;
+            // 
+            // categoryDataSetBindingSource
+            // 
+            this.categoryDataSetBindingSource.DataSource = this.categoryDataSet;
+            this.categoryDataSetBindingSource.Position = 0;
+            // 
+            // categoryDataSet
+            // 
+            this.categoryDataSet.DataSetName = "CategoryDataSet";
+            this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtItem
             // 
@@ -144,21 +159,6 @@
             this.buttonCancel.Text = "キャンセル";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // categoryDataSet
-            // 
-            this.categoryDataSet.DataSetName = "CategoryDataSet";
-            this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoryDataSetBindingSource
-            // 
-            this.categoryDataSetBindingSource.DataSource = this.categoryDataSet;
-            this.categoryDataSetBindingSource.Position = 0;
-            // 
-            // categoryDataTableBindingSource
-            // 
-            this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
-            this.categoryDataTableBindingSource.DataSource = this.categoryDataSetBindingSource;
-            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -169,7 +169,7 @@
             this.Controls.Add(this.txtRemarks);
             this.Controls.Add(this.mtxtMoney);
             this.Controls.Add(this.txtItem);
-            this.Controls.Add(this.comCategory);
+            this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -177,29 +177,28 @@
             this.Controls.Add(this.monCalendar);
             this.Name = "ItemForm";
             this.Text = "登録";
-            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MonthCalendar monCalendar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comCategory;
-        private System.Windows.Forms.TextBox txtItem;
-        private System.Windows.Forms.MaskedTextBox mtxtMoney;
-        private System.Windows.Forms.TextBox txtRemarks;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.BindingSource categoryDataTableBindingSource;
         private System.Windows.Forms.BindingSource categoryDataSetBindingSource;
         private CategoryDataSet categoryDataSet;
+        public System.Windows.Forms.TextBox txtItem;
+        public System.Windows.Forms.ComboBox cmbCategory;
+        public System.Windows.Forms.MaskedTextBox mtxtMoney;
+        public System.Windows.Forms.TextBox txtRemarks;
+        public System.Windows.Forms.MonthCalendar monCalendar;
     }
 }

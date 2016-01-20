@@ -19,13 +19,12 @@ namespace Kakeibo1
 
         private void 追加ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AddData();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            ItemForm frmItem = new ItemForm(categoryDataSet1);
-            DialogResult drRet = frmItem.ShowDialog();
+            AddData();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,6 +33,31 @@ namespace Kakeibo1
             categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("食費", "出金");
             categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("雑費", "出金");
             categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("住居", "出金");
+        }
+
+        private void AddData()
+        {
+            ItemForm frmItem = new ItemForm(categoryDataSet1);
+            DialogResult drRet = frmItem.ShowDialog();
+            if (drRet == DialogResult.OK)
+            {
+                moneyDataSet.moneyDataTable.AddmoneyDataTableRow(
+                    frmItem.monCalendar.SelectionRange.Start,
+                    frmItem.cmbCategory.Text,
+                    frmItem.txtItem.Text,
+                    int.Parse(frmItem.mtxtMoney.Text),
+                    frmItem.txtRemarks.Text);
+            }
+        }
+
+        private void buttonEnd_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
