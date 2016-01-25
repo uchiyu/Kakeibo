@@ -52,8 +52,15 @@ namespace Kakeibo1
                     int.Parse(frmItem.mtxtMoney.Text),
                     frmItem.txtRemarks.Text);
             }
-            total += int.Parse(frmItem.mtxtMoney.Text);
-            total_label.Text = "合計"+ total + "円";
+            if (frmItem.cmbCategory.Text == "給料")
+            {
+                total -= int.Parse(frmItem.mtxtMoney.Text);
+            }
+            else
+            {
+                total += int.Parse(frmItem.mtxtMoney.Text);
+            }
+            total_label.Text = "出費："+ total + "円";
         }
 
         private void buttonEnd_Click(object sender, EventArgs e)
@@ -120,10 +127,18 @@ namespace Kakeibo1
                         strData[2],
                         int.Parse(strData[3]),
                         strData[4]);
-                    total += int.Parse(strData[3]);
+
+                    if (strData[1] == "給料")
+                    {
+                        total -= int.Parse(strData[3]);
+                    }
+                    else
+                    {
+                        total += int.Parse(strData[3]);
+                    }
                 }
                 sr.Close();
-                total_label.Text = "合計" + total + "円";
+                total_label.Text = "出費：" + total + "円";
             }
         }
 
@@ -168,7 +183,17 @@ namespace Kakeibo1
         private void DeleteData()
         {
             int nowRow = dgv.CurrentRow.Index;
+            if ( dgv.Rows[nowRow].Cells[1].Value.ToString() == "給料" )
+            {
+                total += int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString());
+            }
+            else
+            {
+                total -= int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString());
+            }
+            
             dgv.Rows.RemoveAt(nowRow); // 現在行を削除
+            total_label.Text = "出費：" + total + "円";
         }
 
         private void 削除DToolStripMenuItem_Click(object sender, EventArgs e)
