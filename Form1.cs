@@ -12,6 +12,8 @@ namespace Kakeibo1
 {
     public partial class Form1 : Form
     {
+        public int total = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -50,6 +52,8 @@ namespace Kakeibo1
                     int.Parse(frmItem.mtxtMoney.Text),
                     frmItem.txtRemarks.Text);
             }
+            total += int.Parse(frmItem.mtxtMoney.Text);
+            total_label.Text = "合計"+ total + "円";
         }
 
         private void buttonEnd_Click(object sender, EventArgs e)
@@ -116,8 +120,10 @@ namespace Kakeibo1
                         strData[2],
                         int.Parse(strData[3]),
                         strData[4]);
+                    total += int.Parse(strData[3]);
                 }
                 sr.Close();
+                total_label.Text = "合計" + total + "円";
             }
         }
 

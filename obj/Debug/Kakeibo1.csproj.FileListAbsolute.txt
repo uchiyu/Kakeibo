@@ -11,3 +11,10 @@ C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo1\obj\Deb
 C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\bin\Debug\Kakeibo1.exe.config
 C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\obj\Debug\Kakeibo1.exe
 C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\obj\Debug\Kakeibo1.pdb
+C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\bin\Debug\Kakeibo1.exe
+C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\bin\Debug\Kakeibo1.pdb
+C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\obj\Debug\Kakeibo1.csprojResolveAssemblyReference.cache
+C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\obj\Debug\Kakeibo1.Form1.resources
+C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\obj\Debug\Kakeibo1.ItemForm.resources
+C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\obj\Debug\Kakeibo1.Properties.Resources.resources
+C:\Users\13t208\Documents\Visual Studio 2015\Projects\MediaInfo\Kakeibo2\obj\Debug\Kakeibo1.csproj.GenerateResource.Cache

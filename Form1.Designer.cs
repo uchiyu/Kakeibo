@@ -54,6 +54,7 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonEnd = new System.Windows.Forms.Button();
             this.categoryDataSet1 = new Kakeibo1.CategoryDataSet();
+            this.total_label = new System.Windows.Forms.Label();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataTableBindingSource)).BeginInit();
@@ -87,7 +88,7 @@
             // 保存SToolStripMenuItem
             // 
             this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.保存SToolStripMenuItem.Text = "保存(&S)";
             this.保存SToolStripMenuItem.Click += new System.EventHandler(this.保存SToolStripMenuItem_Click);
             // 
@@ -99,7 +100,7 @@
             // 終了XToolStripMenuItem
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了ToolStripMenuItem_Click);
             // 
@@ -123,14 +124,14 @@
             // 変更CToolStripMenuItem
             // 
             this.変更CToolStripMenuItem.Name = "変更CToolStripMenuItem";
-            this.変更CToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.変更CToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.変更CToolStripMenuItem.Text = "変更(&C)";
             this.変更CToolStripMenuItem.Click += new System.EventHandler(this.変更CToolStripMenuItem_Click);
             // 
             // 削除DToolStripMenuItem
             // 
             this.削除DToolStripMenuItem.Name = "削除DToolStripMenuItem";
-            this.削除DToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.削除DToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.削除DToolStripMenuItem.Text = "削除(&D)";
             this.削除DToolStripMenuItem.Click += new System.EventHandler(this.削除DToolStripMenuItem_Click);
             // 
@@ -213,7 +214,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(13, 226);
+            this.buttonAdd.Location = new System.Drawing.Point(12, 253);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 2;
@@ -223,7 +224,7 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(94, 226);
+            this.buttonChange.Location = new System.Drawing.Point(94, 253);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(75, 23);
             this.buttonChange.TabIndex = 3;
@@ -233,7 +234,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(175, 226);
+            this.buttonDelete.Location = new System.Drawing.Point(175, 253);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 4;
@@ -243,7 +244,7 @@
             // 
             // buttonEnd
             // 
-            this.buttonEnd.Location = new System.Drawing.Point(285, 226);
+            this.buttonEnd.Location = new System.Drawing.Point(286, 253);
             this.buttonEnd.Name = "buttonEnd";
             this.buttonEnd.Size = new System.Drawing.Size(75, 23);
             this.buttonEnd.TabIndex = 5;
@@ -256,11 +257,21 @@
             this.categoryDataSet1.DataSetName = "CategoryDataSet";
             this.categoryDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // total_label
+            // 
+            this.total_label.AutoSize = true;
+            this.total_label.Location = new System.Drawing.Point(288, 229);
+            this.total_label.Name = "total_label";
+            this.total_label.Size = new System.Drawing.Size(0, 15);
+            this.total_label.TabIndex = 6;
+            this.total_label.UseCompatibleTextRendering = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 261);
+            this.ClientSize = new System.Drawing.Size(376, 285);
+            this.Controls.Add(this.total_label);
             this.Controls.Add(this.buttonEnd);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonChange);
@@ -310,6 +321,7 @@
         private System.Windows.Forms.BindingSource moneyDataTableBindingSource;
         private MoneyDataSet moneyDataSet;
         private CategoryDataSet categoryDataSet1;
+        public System.Windows.Forms.Label total_label;
     }
 }
 
