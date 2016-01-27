@@ -84,6 +84,10 @@ namespace Kakeibo1
                 }
             }
             total_label.Text = "支出："+ total + "円";
+
+            //予算
+            remainmoney_labal.Text = (int.Parse(budget_box.Text) - total).ToString();
+            message_text(int.Parse(remainmoney_labal.Text));
         }
 
         private void buttonEnd_Click(object sender, EventArgs e)
@@ -174,6 +178,11 @@ namespace Kakeibo1
                 sr.Close();
                 create_chart( category_name , category_withdraw);
                 total_label.Text = "支出：" + total + "円";
+
+                //予算
+                budget_box.Text = "40000";
+                remainmoney_labal.Text = (int.Parse(budget_box.Text) - total).ToString();
+                message_text(int.Parse(remainmoney_labal.Text));
             }
         }
 
@@ -240,6 +249,10 @@ namespace Kakeibo1
 
             dgv.Rows.RemoveAt(nowRow); // 現在行を削除
             total_label.Text = "支出：" + total + "円";
+
+            //予算
+            remainmoney_labal.Text = (int.Parse(budget_box.Text) - total).ToString();
+            message_text(int.Parse(remainmoney_labal.Text));
         }
 
         private void 削除DToolStripMenuItem_Click(object sender, EventArgs e)
@@ -260,6 +273,30 @@ namespace Kakeibo1
 			    graf.Points.AddXY(category_name[i], value[i]); 
 			}
             withdraw_chart.Series.Add(graf);    
+        }
+
+        private void message_text( int currentBudget )
+        {
+            if (currentBudget <= 0)
+            {
+                messagebox.Text = "支出が予算を超えています。";
+            } 
+            else if (currentBudget <= int.Parse(budget_box.Text)/2)
+            {
+                messagebox.Text = "残高の半分を切りました。";
+            }
+            else
+            {
+                messagebox.Text = "";
+            }
+            
+        }
+
+        private void budget_box_TextChanged(object sender, EventArgs e)
+        {
+            //予算
+            remainmoney_labal.Text = (int.Parse(budget_box.Text) - total).ToString();
+            message_text(int.Parse(remainmoney_labal.Text));
         }
     }
 }
