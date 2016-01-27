@@ -81,7 +81,7 @@
             this.ヘルプHToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(695, 24);
+            this.mainMenu.Size = new System.Drawing.Size(858, 24);
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -179,7 +179,7 @@
             this.dgv.Location = new System.Drawing.Point(12, 36);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 21;
-            this.dgv.Size = new System.Drawing.Size(349, 181);
+            this.dgv.Size = new System.Drawing.Size(540, 181);
             this.dgv.TabIndex = 1;
             // 
             // 日付DataGridViewTextBoxColumn
@@ -270,7 +270,7 @@
             // total_label
             // 
             this.total_label.AutoSize = true;
-            this.total_label.Location = new System.Drawing.Point(574, 253);
+            this.total_label.Location = new System.Drawing.Point(743, 253);
             this.total_label.Name = "total_label";
             this.total_label.Size = new System.Drawing.Size(0, 15);
             this.total_label.TabIndex = 6;
@@ -298,7 +298,7 @@
             this.withdraw_chart.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.withdraw_chart.Legends.Add(legend2);
-            this.withdraw_chart.Location = new System.Drawing.Point(383, 0);
+            this.withdraw_chart.Location = new System.Drawing.Point(552, 0);
             this.withdraw_chart.Name = "withdraw_chart";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -313,7 +313,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 285);
+            this.ClientSize = new System.Drawing.Size(858, 285);
             this.Controls.Add(this.total_label);
             this.Controls.Add(this.withdraw_chart);
             this.Controls.Add(this.chart1);

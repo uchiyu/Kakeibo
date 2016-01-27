@@ -83,7 +83,7 @@ namespace Kakeibo1
                     total += int.Parse(frmItem.mtxtMoney.Text);
                 }
             }
-            total_label.Text = "出費："+ total + "円";
+            total_label.Text = "支出："+ total + "円";
         }
 
         private void buttonEnd_Click(object sender, EventArgs e)
@@ -173,7 +173,7 @@ namespace Kakeibo1
                 }
                 sr.Close();
                 create_chart( category_name , category_withdraw);
-                total_label.Text = "出費：" + total + "円";
+                total_label.Text = "支出：" + total + "円";
             }
         }
 
@@ -239,7 +239,7 @@ namespace Kakeibo1
             create_chart(category_name, category_withdraw);
 
             dgv.Rows.RemoveAt(nowRow); // 現在行を削除
-            total_label.Text = "出費：" + total + "円";
+            total_label.Text = "支出：" + total + "円";
         }
 
         private void 削除DToolStripMenuItem_Click(object sender, EventArgs e)
