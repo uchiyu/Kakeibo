@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Kakeibo1
 {
     public partial class Form1 : Form
     {
         public int total = 0;
+        public Series graf = new Series();
+        public string[] category_name = { "食費", "雑費", "住居" };
+        public int[] category_withdraw = { 0, 0, 0 };
 
         public Form1()
         {
@@ -52,13 +56,32 @@ namespace Kakeibo1
                     int.Parse(frmItem.mtxtMoney.Text),
                     frmItem.txtRemarks.Text);
             }
-            if (frmItem.cmbCategory.Text == "給料")
-            {
-                total -= int.Parse(frmItem.mtxtMoney.Text);
+
+            // グラフの計算
+            switch ( frmItem.cmbCategory.Text ) {
+                        case "食費": category_withdraw[0] += int.Parse(frmItem.mtxtMoney.Text); break;
+                        case "雑費": category_withdraw[1] += int.Parse(frmItem.mtxtMoney.Text); break;
+                        case "住居": category_withdraw[2] += int.Parse(frmItem.mtxtMoney.Text); break;
             }
-            else
+            // グラフの描画
+            switch (frmItem.cmbCategory.Text)
             {
-                total += int.Parse(frmItem.mtxtMoney.Text);
+                case "食費": 
+                case "雑費":
+                case "住居": graf.Points.Clear(); create_chart(category_name, category_withdraw); break;
+            }
+            
+            // 出費の計算
+            if (frmItem.mtxtMoney.Text != "")
+            {
+                if (frmItem.cmbCategory.Text == "給料")
+                {
+                    total -= int.Parse(frmItem.mtxtMoney.Text);
+                }
+                else
+                {
+                    total += int.Parse(frmItem.mtxtMoney.Text);
+                }
             }
             total_label.Text = "出費："+ total + "円";
         }
@@ -112,6 +135,9 @@ namespace Kakeibo1
             string[] strData;
             string strLine;
             bool fileExists = System.IO.File.Exists(path);
+            
+            graf.ChartType = SeriesChartType.Pie;
+
             if (fileExists)
             {
                 System.IO.StreamReader sr = new System.IO.StreamReader(
@@ -128,6 +154,14 @@ namespace Kakeibo1
                         int.Parse(strData[3]),
                         strData[4]);
 
+                    // グラフの値
+                    switch ( strData[1] ) {
+                        case "食費": category_withdraw[0] += int.Parse(strData[3]); break;
+                        case "雑費": category_withdraw[1] += int.Parse(strData[3]); break;
+                        case "住居": category_withdraw[2] += int.Parse(strData[3]); break;
+                    }
+                   
+                    // 出費の計算
                     if (strData[1] == "給料")
                     {
                         total -= int.Parse(strData[3]);
@@ -138,6 +172,7 @@ namespace Kakeibo1
                     }
                 }
                 sr.Close();
+                create_chart( category_name , category_withdraw);
                 total_label.Text = "出費：" + total + "円";
             }
         }
@@ -191,7 +226,18 @@ namespace Kakeibo1
             {
                 total -= int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString());
             }
-            
+
+            switch (dgv.Rows[nowRow].Cells[1].Value.ToString())
+            {
+                case "食費": category_withdraw[0] -= int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString()); break;
+                case "雑費": category_withdraw[1] -= int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString()); break;
+                case "住居": category_withdraw[2] -= int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString()); break;
+            }
+
+            // グラフの描画
+            graf.Points.Clear();
+            create_chart(category_name, category_withdraw);
+
             dgv.Rows.RemoveAt(nowRow); // 現在行を削除
             total_label.Text = "出費：" + total + "円";
         }
@@ -204,6 +250,16 @@ namespace Kakeibo1
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             DeleteData();
+        }
+
+        private void create_chart(string[] category_name, int[] value)
+        {
+            withdraw_chart.Series.Remove(graf);
+            for (int i = 0; i < 3; i++)
+			{
+			    graf.Points.AddXY(category_name[i], value[i]); 
+			}
+            withdraw_chart.Series.Add(graf);    
         }
     }
 }

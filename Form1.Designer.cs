@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.ファイルFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,11 +61,15 @@
             this.buttonEnd = new System.Windows.Forms.Button();
             this.categoryDataSet1 = new Kakeibo1.CategoryDataSet();
             this.total_label = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.withdraw_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.withdraw_chart)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -71,7 +81,7 @@
             this.ヘルプHToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(376, 24);
+            this.mainMenu.Size = new System.Drawing.Size(695, 24);
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -214,7 +224,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(12, 253);
+            this.buttonAdd.Location = new System.Drawing.Point(12, 232);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 2;
@@ -224,7 +234,7 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(94, 253);
+            this.buttonChange.Location = new System.Drawing.Point(93, 232);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(75, 23);
             this.buttonChange.TabIndex = 3;
@@ -234,7 +244,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(175, 253);
+            this.buttonDelete.Location = new System.Drawing.Point(175, 232);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 4;
@@ -244,7 +254,7 @@
             // 
             // buttonEnd
             // 
-            this.buttonEnd.Location = new System.Drawing.Point(286, 253);
+            this.buttonEnd.Location = new System.Drawing.Point(286, 232);
             this.buttonEnd.Name = "buttonEnd";
             this.buttonEnd.Size = new System.Drawing.Size(75, 23);
             this.buttonEnd.TabIndex = 5;
@@ -260,18 +270,53 @@
             // total_label
             // 
             this.total_label.AutoSize = true;
-            this.total_label.Location = new System.Drawing.Point(288, 229);
+            this.total_label.Location = new System.Drawing.Point(574, 253);
             this.total_label.Name = "total_label";
             this.total_label.Size = new System.Drawing.Size(0, 15);
             this.total_label.TabIndex = 6;
             this.total_label.UseCompatibleTextRendering = true;
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(344, 289);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(8, 8);
+            this.chart1.TabIndex = 7;
+            this.chart1.Text = "chart1";
+            // 
+            // withdraw_chart
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.withdraw_chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.withdraw_chart.Legends.Add(legend2);
+            this.withdraw_chart.Location = new System.Drawing.Point(383, 0);
+            this.withdraw_chart.Name = "withdraw_chart";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.withdraw_chart.Series.Add(series2);
+            this.withdraw_chart.Size = new System.Drawing.Size(300, 300);
+            this.withdraw_chart.TabIndex = 8;
+            this.withdraw_chart.Text = "内訳";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 285);
+            this.ClientSize = new System.Drawing.Size(695, 285);
             this.Controls.Add(this.total_label);
+            this.Controls.Add(this.withdraw_chart);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.buttonEnd);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonChange);
@@ -289,6 +334,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.withdraw_chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,6 +369,8 @@
         private MoneyDataSet moneyDataSet;
         private CategoryDataSet categoryDataSet1;
         public System.Windows.Forms.Label total_label;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart withdraw_chart;
     }
 }
 
